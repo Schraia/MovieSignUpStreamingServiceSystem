@@ -15,16 +15,16 @@
         </div>
         
         <div id="paymentMethod">
-            <img>
-            <img>
+            <img id="cash" src="icons/cash-icon.svg">
+            <img id="creditCard" src="icons/credit-card-icon.svg">
         </div>
 
         <div>
             <select id="subsType">
-                <option>Mobile</option>
-                <option>Basic</option>
-                <option>Standard</option>
-                <option>Premium</option>
+                <option selected value="Mobile">Mobile</option>
+                <option value="Basic">Basic</option>
+                <option value="Standard">Standard</option>
+                <option value="Premium">Premium</option>
             </select>
         </div>
 
@@ -33,7 +33,12 @@
         </div>
 
         <div>
-            <input type="radio" id="resolutionType">
+            <input type="radio" id="720p" name="resolutionType" value="720p">
+            <label for="html">720p</label><br>
+            <input type="radio" id="1440p" name="resolutionType" value="1440p">
+            <label for="css">1440p</label><br>
+            <input type="radio" id="4k" name="resolutionType" value="4k">
+            <label for="javascript">4k</label> 
         </div>
 
         <div class="output">

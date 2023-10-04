@@ -1,25 +1,55 @@
 document.addEventListener("DOMContentLoaded", function() 
 {
-    // Getting all user inputs
-    const userName = document.getElementById("textBoxName").value;
-    const userEmail = document.getElementById("textBoxEmail").value;
-    const userpaymentMethod = document.getElementById("paymentMethod").value;
-    const userSubsType = document.getElementById("subsType").value;
-    const userUsersAccess = document.getElementById("usersAccess").value;
-    const userResolutionType = document.getElementById("resolutionType").value;
-
-    const signUp = new SignUp(userName, userEmail, userpaymentMethod, userSubsType, userUsersAccess, userResolutionType);
     
     // Just here to test the outputs to see if it is working
-    document.addEventListener("click", function() 
+    document.getElementById("testButton").addEventListener("click", function() 
     {
-        console.log(signUp.name);
-        console.log(signUp.email);
-        console.log(signUp.userpaymentMethod);
-        console.log(signUp.userSubsType);
-        console.log(signUp.userUsersAccess);
-        console.log(signUp.userResolutionType);
+        // Getting all user inputs
+        const userName = document.getElementById("textBoxName").value;
+        const userEmail = document.getElementById("textBoxEmail").value;
+        const userUsersAccess = document.getElementById("usersAccess").value;
+        const userResolutionType =  document.querySelector('input[name="resolutionType"]:checked').value
+
+        const signUp = new SignUp(userName, userEmail, userpaymentMethod, userSubsType, userUsersAccess, userResolutionType);
+        
+        console.log("Name: ", signUp.name);
+        console.log("Email: ", signUp.email);
+        console.log("Payment: ", signUp.paymentMethod);
+        console.log("Subs: ", signUp.subsType);
+        console.log("UsersAccess: ", signUp.usersAccess);
+        console.log("Resolution: ", signUp.resolutionType);
     });
+
+    let userpaymentMethod = undefined;
+    // If the cash image is clicked 
+    document.getElementById("cash").addEventListener("click", function() {
+        userpaymentMethod = "Cash";
+    });
+    // If the credit card image is clicked 
+    document.getElementById("creditCard").addEventListener("click", function() {
+        userpaymentMethod = "Credit";
+    });
+
+    let userSubsType = 150;
+    // If any of the dropdown input is changed
+    document.getElementById("subsType").addEventListener("change", function() {
+        switch (this.value)
+        {
+            case "Mobile":
+                userSubsType = 150;
+                break;
+            case "Basic":
+                userSubsType = 400;
+                break;
+            case "Standard":
+                userSubsType = 500;
+                break;
+            case "Premium":
+                userSubsType = 600;
+                break;    
+        }
+    });
+
 });
 
 class SignUp
