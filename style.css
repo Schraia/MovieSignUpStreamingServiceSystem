@@ -1,0 +1,99 @@
+html {
+    background-image: url(https://wallpaperaccess.com/full/1426640.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: thick;
+}
+body {
+    text-align: center;
+}
+* {
+    box-sizing: border-box;
+}
+.header {
+    overflow: hidden;
+    margin: -8px 0px 0px -8px;
+    padding-right: -10px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(17, 19, 22, 0.9);
+}
+.topnav {
+    margin: 25px 0px 0px 25px;
+    text-align: left;
+    
+    color: #66FCF1;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+div.backGround {
+    position: relative; 
+    background-color: #0B0C10;
+    border: 1px;
+    border-style: solid;
+    border-color: #45A29E;
+    margin: 0px 100px 100px 100px;
+    height: 75vh;
+    width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+div.backGround::before {    
+      content: "";
+      background-image: url("https://w0.peakpx.com/wallpaper/1006/827/HD-wallpaper-3d-triangle-abstract-pattern-texture.jpg");
+      background-position: center;
+      background-repeat: repeat;
+      background-size: cover;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.3;
+}
+h1 {
+    color: #66FCF1;
+    font-family: "Gill Sans", sans-serif;
+    margin-top: -75px;
+}
+.h1 {
+
+}
+.mainBox {
+    margin: ;
+    position: relative;
+    width: 60%;
+    height: 55%;
+    text-align: center;
+    
+}
+input, select, img {
+    margin-bottom: 10px;
+}
+label {
+    color: #C5C6C7;
+    position: absolute;
+    right: 65%;
+    margin-bottom: 10px;
+}
+img:hover {
+
+    border: 3px;
+    border-color: #66FCF1;
+    border-style: solid;
+}
+.payMentCredit {
+    width: 200px;
+    height: 40px;
+    margin-right: 10px;
+}
+.payMentCash {
+    width: 70px;
+    height: 40px;
+}
+form {
+    background: #1F2833;
+    padding: 75px 0 ;
+}
