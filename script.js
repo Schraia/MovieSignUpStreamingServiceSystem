@@ -5,10 +5,10 @@ document.addEventListener("DOMContentLoaded", function()
     document.getElementById("testButton").addEventListener("click", function() 
     {
         // Getting all user inputs
-        const userName = document.getElementById("textBoxName").value;
-        const userEmail = document.getElementById("textBoxEmail").value;
-        const userUsersAccess = document.getElementById("usersAccess").value;
-        const userResolutionType =  document.querySelector('input[name="resolutionType"]:checked').value
+        let userName = document.getElementById("textBoxName").value;
+        let userEmail = document.getElementById("textBoxEmail").value;
+        let userUsersAccess = document.getElementById("usersAccess").value;
+        let userResolutionType =  document.querySelector('input[name="resolutionType"]:checked').value
 
         const signUp = new SignUp(userName, userEmail, userpaymentMethod, userSubsType, userUsersAccess, userResolutionType);
         
@@ -71,9 +71,34 @@ class SignUp
         this.resolutionType = resolutionType;
     }
 
+    static hasNoNumbers(value)
+    {
+        const numberRegex = /^[^0-9]*$/;
+        return numberRegex.test(value)
+    }
+
+    static isValidEmail(value)
+    {
+        const emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+        return emailRegex.test(value);
+    }
+
     set name(value)
     {
-        this._name = value;
+        let trimmedValue = value.trim();
+        if (trimmedValue === "") 
+        {
+            alert("Name field must not be empty");
+            throw new Error();
+        }
+
+        if (!SignUp.hasNoNumbers(trimmedValue))
+        {
+            alert("Name must not contain numbers");
+            throw new Error();
+        }
+
+        this._name = trimmedValue;
     }
     get name()
     {
@@ -82,7 +107,14 @@ class SignUp
 
     set email(value)
     {
-        this._email = value;
+        let trimmedValue = value.trim();
+        if ((!SignUp.isValidEmail(trimmedValue))) 
+        {
+            alert("Invalid email address field syntax");
+            throw new Error();
+        } 
+
+        this._email = trimmedValue;
     }
     get email()
     {
@@ -109,7 +141,36 @@ class SignUp
 
     set usersAccess(value)
     {
-        this._usersAccess = value;
+        const trimmedValue = value.trim();
+        if (!trimmedValue.match(/^\d+$/)) 
+        {
+            alert("Users access field must contain only digits");
+            throw new Error();
+        }
+    
+        const parsedValue = parseInt(trimmedValue);
+        if ((isNaN(parsedValue)))
+        {
+            alert("Users access field must not be empty and must be an integer");
+            throw new Error();
+        }   
+
+        const lessThanZero = (parsedValue) =>
+        {
+            if (parsedValue > 0)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        if (lessThanZero(parsedValue))
+        {
+            alert("Users access field must not be lesser than one");
+            throw new Error();
+        }
+
+        this._usersAccess = parsedValue;
     }
     get usersAccess()
     {
