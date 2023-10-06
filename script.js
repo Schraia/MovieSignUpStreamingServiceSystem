@@ -29,24 +29,10 @@ document.addEventListener("DOMContentLoaded", function()
         userpaymentMethod = "Credit";
     });
 
-    let userSubsType = 150;
+    let userSubsType = undefined;
     // If any of the dropdown input is changed
     document.getElementById("subsType").addEventListener("change", function() {
-        switch (this.value)
-        {
-            case "Mobile":
-                userSubsType = 150;
-                break;
-            case "Basic":
-                userSubsType = 400;
-                break;
-            case "Standard":
-                userSubsType = 500;
-                break;
-            case "Premium":
-                userSubsType = 600;
-                break;    
-        }
+        userSubsType = this.value;
     });
 
     let userResolutionType = undefined;
