@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function()
         let userName = document.getElementById("textBoxName").value;
         let userEmail = document.getElementById("textBoxEmail").value;
         let userUsersAccess = document.getElementById("usersAccess").value;
-        let userResolutionType =  document.querySelector('input[name="resolutionType"]:checked').value
 
         const signUp = new SignUp(userName, userEmail, userpaymentMethod, userSubsType, userUsersAccess, userResolutionType);
         
@@ -50,6 +49,13 @@ document.addEventListener("DOMContentLoaded", function()
         }
     });
 
+    let userResolutionType = undefined;
+    // If any of the radio buttons are clicked
+    document.getElementsByName("resolutionTypeGroup").forEach((resolution) => {
+        resolution.addEventListener("change", (event) => {
+            userResolutionType = event.target.value;
+        });
+    });
 });
 
 class SignUp
@@ -123,6 +129,11 @@ class SignUp
 
     set paymentMethod(value)
     {
+        if (value === undefined)
+        {
+            alert("A payment method is required");
+            throw new Error();
+        }
         this._paymentMethod = value;
     }
     get paymentMethod()
@@ -132,6 +143,11 @@ class SignUp
 
     set subsType(value)
     {
+        if (value === undefined)
+        {
+            alert("A subscription type is required");
+            throw new Error();
+        }
         this._subsType = value;
     }
     get subsType()
@@ -179,6 +195,11 @@ class SignUp
 
     set resolutionType(value)
     {
+        if (value === undefined)
+        {
+            alert("A resolution type input is required");
+            throw new Error();
+        }
         this._resolutionType = value;
     }
     get resolutionType()
