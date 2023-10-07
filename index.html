@@ -6,7 +6,91 @@
     </head>
 
     <body>
-        <div>
+        
+        <div class="header">
+            <div class="topnav">
+                <h2>XMovies</h2>
+            </div>
+        </div>
+
+        <div class="backGround">
+            <div class="h1">
+                <h1>Subscription Registration</h1>
+            </div>
+            <div class="mainBox">
+                <form>
+                    <div>
+                        <label for="textBoxName">Name: </label>
+                        <input type="text" id="textBoxName" required>
+                    </div>
+
+                    <div>
+                        <label for="textBoxEmail">Email Address: </label>
+                        <input type="text" id="textBoxEmail" required>
+                    </div>
+
+                    <!-- <div>
+                        <label for="paymentMethod">Payment Method: </label>
+                    </div> -->
+
+                    <div id="paymentMethod" required>
+                        <img class="paymentCredit" id="cash" src="icons/cash-icon.svg">
+                        <img class="paymentCash" id="creditCard" src="icons/credit-card-icon.svg">                 
+                    </div>
+                    <div>
+                        <label for="payCredit" id="payCreditL" class="payCreditL">Enter your Credit Card number: </label>
+                        <input type="text" id="payCredit" class="payCredit" required>
+                    </div>
+                    <div>
+                        <label for="payCash" id="payCashL" class="payCashL">Enter your monthly payment: </label>
+                        <input type="text" id="payCash" class="payCash" required>
+                    </div>
+
+                    <div>
+                        <label for="subsType">Subscription Type: </label>
+                        <select id="subsType" required>
+                            <option>Mobile</option>
+                            <option>Basic</option>
+                            <option>Standard</option>
+                            <option>Premium</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="usersAccess">Additional Users Access: </label>
+                        <input type="number" id="usersAccess" required>                       
+                    </div>
+
+                    <!-- <div>
+                        <label for="resolutionTypeGroup">Resolution Type: </label>
+                    </div> -->
+
+                    <div class="resolutionRadioGroup">
+                        <input type="radio" id="720p" name="resolutionTypeGroup" value="720p" checked = "checked">
+                        <label>720p</label><br>
+                        <input type="radio" id="1080p" name="resolutionTypeGroup" value="1080p">
+                        <label>1080p</label><br>
+                        <input type="radio" id="4k" name="resolutionTypeGroup" value="4k">
+                        <label>4k</label> 
+                    </div>
+                    <div>
+                        <input type="submit" id="testButton" value="Submit">
+                    </div>
+                </form>>
+
+                    <div class="output">
+                        <p id="outName"></p>
+                        <p id="outEmail"></p>
+                        <p id="outSubscriptionType"></p>
+                        <p id="outTotalMonthlyFee"></p>
+                        <p id="outEligibleDevice"></p>
+                        <p id="outNumberUsers"></p>
+                        <p id="outDateNextPayment"></p>
+                    </div>
+            </div>
+        </div>
+
+        <!-- <div>
             <input type="text" id="textBoxName">
         </div>
         
@@ -51,5 +135,5 @@
             <p id="outDateNextPayment"></p>
         </div>
 
-        <button id="testButton">Test</button>
-</html
+        <button id="testButton">Test</button> -->
+</html>

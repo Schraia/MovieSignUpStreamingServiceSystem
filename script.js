@@ -9,25 +9,46 @@ document.addEventListener("DOMContentLoaded", function()
         let userEmail = document.getElementById("textBoxEmail").value;
         let userUsersAccess = document.getElementById("usersAccess").value;
 
-        const signUp = new SignUp(userName, userEmail, userpaymentMethod, userSubsType, userUsersAccess, userResolutionType);
+        const signUp = new SignUp(userName, userEmail, userpaymentMethod, userpaymentMethodValue, userSubsType, userUsersAccess, userResolutionType);
         
+        // Subscription bill to be displayed in separate HTML
         console.log("Name: ", signUp.name);
         console.log("Email: ", signUp.email);
-        console.log("Payment: ", signUp.paymentMethod);
+        console.log("Payment: ", signUp.paymentMethod); 
+        console.log("PaymentMethodValue: ",);
         console.log("Subs: ", signUp.subsType);
+        console.log("Total Monthly Fee: ", signUp.calculateMonthlyFee());
+        console.log("DeviceImageAccess:",)
+        console.log("Number of users: ",)
         console.log("UsersAccess: ", signUp.usersAccess);
         console.log("Resolution: ", signUp.resolutionType);
-        console.log(signUp.calculate())
+        console.log("Next Charge Date: ", signUp.calculateNextMonthDate());
     });
 
     let userpaymentMethod = undefined;
     // If the cash image is clicked 
     document.getElementById("cash").addEventListener("click", function() {
         userpaymentMethod = "Cash";
+        document.getElementById("payCredit").style.display = "none";
+        document.getElementById("payCreditL").style.display = "none";
+        document.getElementById("payCash").style.display = "inline ";
+        document.getElementById("payCashL").style.display = "inline";
     });
     // If the credit card image is clicked 
     document.getElementById("creditCard").addEventListener("click", function() {
         userpaymentMethod = "Credit";
+        document.getElementById("payCash").style.display = "none";
+        document.getElementById("payCashL").style.display = "none";
+        document.getElementById("payCredit").style.display = "inline";
+        document.getElementById("payCreditL").style.display = "inline";
+    });
+
+    let userpaymentMethodValue = undefined;
+    document.getElementById("payCash").addEventListener("input", function() {
+        userpaymentMethodValue = `$${this.value}`;
+    });
+    document.getElementById("payCredit").addEventListener("input", function() {
+        userpaymentMethodValue = this.value;
     });
 
     let userSubsType = "Mobile";
@@ -35,7 +56,6 @@ document.addEventListener("DOMContentLoaded", function()
     document.getElementById("subsType").addEventListener("change", function() {
         userSubsType = this.value;
     });
-
     let userResolutionType = "720p";
     // If any of the radio buttons are clicked
     document.getElementsByName("resolutionTypeGroup").forEach((resolution) => {
@@ -50,15 +70,17 @@ class SignUp
     _name;
     _email;
     _paymentMethod;
+    _paymentMethodValue;
     _subsType;
     _usersAcess;
     _resolutionType;
 
-    constructor(name, email, paymentMethod, subsType, usersAccess, resolutionType)
+    constructor(name, email, paymentMethod, paymentMethodValue, subsType, usersAccess, resolutionType)
     {
         this.name = name;
         this.email = email;
         this.paymentMethod = paymentMethod;
+        this.paymentMethodValue = paymentMethodValue;
         this.subsType = subsType;
         this.usersAccess = usersAccess;
         this.resolutionType = resolutionType;
@@ -128,6 +150,15 @@ class SignUp
         return this._paymentMethod;
     }
 
+    set paymentMethodValue(value)
+    {
+        // do setters
+    }
+    get paymentMethodValue()
+    {
+        return this._paymentMethodValue
+    }
+
     set subsType(value)
     {
         if (value === undefined)
@@ -160,16 +191,16 @@ class SignUp
 
         const lessThanZero = (parsedValue) =>
         {
-            if (parsedValue > 0)
+            if (parsedValue < 0)
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
 
         if (lessThanZero(parsedValue))
         {
-            alert("Users access field must not be lesser than one");
+            alert("Users access field must not be a negative value");
             throw new Error();
         }
 
@@ -194,7 +225,8 @@ class SignUp
         return this._resolutionType;
     }
 
-    calculate(){
+    calculateMonthlyFee()
+    {
         let subVal = 0, resVal = 0
         switch(this.subsType){
             case "Mobile":
@@ -221,7 +253,25 @@ class SignUp
                 resVal = 80;
                 break;
         }
-        return subVal + resVal + ((this.usersAccess - 1) * 60)
+        return subVal + resVal + ((this.usersAccess) * 60);
+    }
 
+    calculateNextMonthDate()
+    {
+        const currentDate = new Date();
+
+        const currentDay = currentDate.getDate();
+        const currentMonth = currentDate.getMonth() + 1; 
+        const currentYear = currentDate.getFullYear();
+
+        const futureDate = new Date(currentYear, currentMonth - 1, currentDay);
+
+        futureDate.setDate(futureDate.getDate() + 30);
+        
+        const futureDay = futureDate.getDate();
+        const futureMonth = futureDate.getMonth() + 1; 
+        const futureYear = futureDate.getFullYear();
+
+        return `${futureMonth}/${futureDay}/${futureYear}`;
     }
 }
