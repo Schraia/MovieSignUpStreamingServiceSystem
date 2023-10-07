@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function()
         console.log("Subs: ", signUp.subsType);
         console.log("UsersAccess: ", signUp.usersAccess);
         console.log("Resolution: ", signUp.resolutionType);
+        console.log(signUp.calculate())
     });
 
     let userpaymentMethod = undefined;
@@ -29,13 +30,13 @@ document.addEventListener("DOMContentLoaded", function()
         userpaymentMethod = "Credit";
     });
 
-    let userSubsType = undefined;
+    let userSubsType = "Mobile";
     // If any of the dropdown input is changed
     document.getElementById("subsType").addEventListener("change", function() {
         userSubsType = this.value;
     });
 
-    let userResolutionType = undefined;
+    let userResolutionType = "720p";
     // If any of the radio buttons are clicked
     document.getElementsByName("resolutionTypeGroup").forEach((resolution) => {
         resolution.addEventListener("change", (event) => {
@@ -191,5 +192,36 @@ class SignUp
     get resolutionType()
     {
         return this._resolutionType;
+    }
+
+    calculate(){
+        let subVal = 0, resVal = 0
+        switch(this.subsType){
+            case "Mobile":
+                subVal = 150;
+                break;
+            case "Basic":
+                subVal = 400;
+                break;
+            case "Standard":
+                subVal = 500;
+                break;
+            case "Premium":
+                subVal = 600;
+                break;
+        }
+        switch(this.resolutionType){
+            case "720p":
+                resVal = 0;
+                break;
+            case "1080p":
+                resVal = 30;
+                break;
+            case "4k":
+                resVal = 80;
+                break;
+        }
+        return subVal + resVal + ((this.usersAccess - 1) * 60)
+
     }
 }
