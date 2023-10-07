@@ -33,7 +33,7 @@ div.backGround {
     border-style: solid;
     border-color: #45A29E;
     margin: 0px 100px 100px 100px;
-    height: 75vh;
+    height: 77vh;
     width: 85%;
     display: flex;
     align-items: center;
@@ -58,14 +58,11 @@ h1 {
     font-family: "Gill Sans", sans-serif;
     margin-top: -75px;
 }
-.h1 {
 
-}
 .mainBox {
-    margin: ;
     position: relative;
     width: 60%;
-    height: 55%;
+    height: 60%;
     text-align: center;
     
 }
@@ -84,15 +81,22 @@ img:hover {
     border-color: #66FCF1;
     border-style: solid;
 }
-.payMentCredit {
+.paymentCredit {
     width: 200px;
     height: 40px;
     margin-right: 10px;
 }
-.payMentCash {
+.payCredit, .payCreditL {
+    display: none;
+}
+.paymentCash {
     width: 70px;
     height: 40px;
 }
+.payCash, .payCashL {
+    display: none;
+}
+
 form {
     background: #1F2833;
     padding: 75px 0 ;

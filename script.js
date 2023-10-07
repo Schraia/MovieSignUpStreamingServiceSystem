@@ -94,4 +94,28 @@ class SignIn
     {
         return this._resolutionType;
     }
+
+    
+}
+
+let paymentCredit = document.getElementById("paymentCredit")
+paymentCredit.addEventListener("onclick", function(){
+    creditPay();
+});
+
+let paymentCash = document.getElementById("paymentCash")
+paymentCash.addEventListener("onclick", function(){
+    cashPay();
+});
+
+function creditPay() 
+{
+    document.getElementById("payCredit").style.display = "inline";
+    document.getElementById("payCreditL").style.display = "inline";
+}
+
+function cashPay() 
+{
+    document.getElementById("payCash").style.display = "inline";
+    document.getElementById("payCashL").style.display = "inline";
 }
