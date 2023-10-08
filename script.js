@@ -31,22 +31,21 @@ document.addEventListener("DOMContentLoaded", function()
         userpaymentMethod = "Cash";
         document.getElementById("payCredit").style.display = "none";
         document.getElementById("payCreditL").style.display = "none";
-        document.getElementById("payCash").style.display = "inline ";
-        document.getElementById("payCashL").style.display = "inline";
+        //document.getElementById("payCash").style.display = "inline ";
+        //document.getElementById("payCashL").style.display = "inline";
+        document.getElementById('payCredit').required = false;
     });
     // If the credit card image is clicked 
     document.getElementById("creditCard").addEventListener("click", function() {
         userpaymentMethod = "Credit";
-        document.getElementById("payCash").style.display = "none";
-        document.getElementById("payCashL").style.display = "none";
+        //document.getElementById("payCash").style.display = "none";
+        //document.getElementById("payCashL").style.display = "none";
         document.getElementById("payCredit").style.display = "inline";
         document.getElementById("payCreditL").style.display = "inline";
+        document.getElementById('payCredit').required = true;
     });
 
     let userpaymentMethodValue = undefined;
-    document.getElementById("payCash").addEventListener("input", function() {
-        userpaymentMethodValue = `$${this.value}`;
-    });
     document.getElementById("payCredit").addEventListener("input", function() {
         userpaymentMethodValue = this.value;
     });

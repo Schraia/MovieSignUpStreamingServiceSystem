@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    <form onsubmit="return false">
     <head>
         <script src="script.js"></script>
         <link rel="stylesheet" href="style.css">
@@ -38,12 +39,8 @@
                         <img class="paymentCash" id="creditCard" src="icons/credit-card-icon.svg">                 
                     </div>
                     <div>
-                        <label for="payCredit" id="payCreditL" class="payCreditL">Enter your Credit Card number: </label>
+                        <label for="payCredit" id="payCreditL"  class="payCreditL">Enter your Credit Card number: </label>
                         <input type="text" id="payCredit" class="payCredit" required>
-                    </div>
-                    <div>
-                        <label for="payCash" id="payCashL" class="payCashL">Enter your monthly payment: </label>
-                        <input type="text" id="payCash" class="payCash" required>
                     </div>
 
                     <div>
@@ -136,4 +133,5 @@
         </div>
 
         <button id="testButton">Test</button> -->
+    </form>
 </html>
