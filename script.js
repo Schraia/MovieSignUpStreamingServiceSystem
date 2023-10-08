@@ -1,65 +1,89 @@
 document.addEventListener("DOMContentLoaded", function() 
 {
-    
-    // Just here to test the outputs to see if it is working
-    document.getElementById("testButton").addEventListener("click", function() 
+    if (window.location.pathname.endsWith("/input.html"))
     {
-        // Getting all user inputs
-        let userName = document.getElementById("textBoxName").value;
-        let userEmail = document.getElementById("textBoxEmail").value;
-        let userUsersAccess = document.getElementById("usersAccess").value;
-
-        const signUp = new SignUp(userName, userEmail, userpaymentMethod, userpaymentMethodValue, userSubsType, userUsersAccess, userResolutionType);
-        
-        // Subscription bill to be displayed in separate HTML
-        console.log("Name: ", signUp.name);
-        console.log("Email: ", signUp.email);
-        console.log("Payment: ", signUp.paymentMethod); // Image
-        console.log("PaymentMethodValue: ", signUp.paymentMethodValue);
-        console.log("Subs: ", signUp.subsType);
-        console.log("Total Monthly Fee: ", signUp.calculateMonthlyFee());
-        console.log("DeviceImageAccess:", signUp.deviceAccess()); // Image
-        console.log("Number of users: ", signUp.numOfUsers()); // Image
-        console.log("UsersAccess: ", signUp.usersAccess);
-        console.log("Resolution: ", signUp.resolutionType);
-        console.log("Next Charge Date: ", signUp.calculateNextMonthDate());
-    });
-
-    let userpaymentMethodValue = undefined;
-    let userpaymentMethod = undefined;
-    // If the cash image is clicked 
-    document.getElementById("cash").addEventListener("click", function() {
-        userpaymentMethod = "Cash";
-        userpaymentMethodValue = "Cash";
-        document.getElementById("payCredit").style.display = "none";
-        document.getElementById("payCreditL").style.display = "none";
-        document.getElementById('payCredit').required = false;
-    });
-    // If the credit card image is clicked 
-    document.getElementById("creditCard").addEventListener("click", function() {
-        userpaymentMethod = "Credit";
-        userpaymentMethodValue = undefined;
-        document.getElementById("payCredit").style.display = "inline";
-        document.getElementById("payCreditL").style.display = "inline";
-        document.getElementById('payCredit').required = true;
-    });
-    // When the credit card image is clicked, there is a textbox
-    document.getElementById("payCredit").addEventListener("input", function() {
-        userpaymentMethodValue = this.value;
-    });
-
-    let userSubsType = "Mobile";
-    // If any of the dropdown input is changed
-    document.getElementById("subsType").addEventListener("change", function() {
-        userSubsType = this.value;
-    });
-    let userResolutionType = "720p";
-    // If any of the radio buttons are clicked
-    document.getElementsByName("resolutionTypeGroup").forEach((resolution) => {
-        resolution.addEventListener("change", (event) => {
-            userResolutionType = event.target.value;
+        let userpaymentMethodValue = undefined;
+        let userpaymentMethod = undefined;
+        // If the cash image is clicked 
+        document.getElementById("cash").addEventListener("click", function() {
+            userpaymentMethod = "Cash";
+            userpaymentMethodValue = "Cash";
+            document.getElementById("payCredit").style.display = "none";
+            document.getElementById("payCreditL").style.display = "none";
+            document.getElementById("payCredit").required = false;
         });
-    });
+        // If the credit card image is clicked 
+        document.getElementById("creditCard").addEventListener("click", function() {
+            userpaymentMethod = "Credit";
+            userpaymentMethodValue = undefined;
+            document.getElementById("payCredit").style.display = "inline";
+            document.getElementById("payCreditL").style.display = "inline";
+            document.getElementById('payCredit').required = true;
+        });
+        // When the credit card image is clicked, there is a textbox
+        document.getElementById("payCredit").addEventListener("input", function() {
+            userpaymentMethodValue = this.value;
+        });
+    
+        let userSubsType = "Mobile";
+        // If any of the dropdown input is changed
+        document.getElementById("subsType").addEventListener("change", function() {
+            userSubsType = this.value;
+        });
+        let userResolutionType = "720p";
+        // If any of the radio buttons are clicked
+        document.getElementsByName("resolutionTypeGroup").forEach((resolution) => {
+            resolution.addEventListener("change", (event) => {
+                userResolutionType = event.target.value;
+            });
+        });
+
+        // Just here to test the outputs to see if it is working
+        document.getElementById("testButton").addEventListener("click", function() 
+        {
+            // Getting all user inputs
+            let userName = document.getElementById("textBoxName").value;
+            let userEmail = document.getElementById("textBoxEmail").value;
+            let userUsersAccess = document.getElementById("usersAccess").value;
+    
+            const signUp = new SignUp(
+                userName, 
+                userEmail, 
+                userpaymentMethod, 
+                userpaymentMethodValue, 
+                userSubsType, userUsersAccess, 
+                userResolutionType);
+            
+            // Subscription bill to be displayed in separate HTML
+            console.log("Name: ", signUp.name);
+            console.log("Email: ", signUp.email);
+            console.log("Payment: ", signUp.paymentMethod); // Image
+            console.log("PaymentMethodValue: ", signUp.paymentMethodValue);
+            console.log("Subs: ", signUp.subsType);
+            console.log("Total Monthly Fee: ", signUp.calculateMonthlyFee());
+            console.log("DeviceImageAccess:", signUp.deviceAccess()); // Image
+            console.log("Number of users: ", signUp.numOfUsers()); // Image
+            console.log("UsersAccess: ", signUp.usersAccess);
+            console.log("Resolution: ", signUp.resolutionType);
+            console.log("Next Charge Date: ", signUp.calculateNextMonthDate());
+            
+            window.location.href = "output.html";
+            localStorage.setItem("signUpData", JSON.stringify(signUp));
+        });
+    }
+
+    else if (window.location.pathname.endsWith("/output.html"))
+    {
+        const signUp = JSON.parse(localStorage.getItem("signUpData"));
+
+        document.getElementById("outTextBoxName").innerText = signUp._name;
+        //document.getElementById("out")
+        
+        document.getElementById("bruh").addEventListener("click", function() {
+            console.log("bruhhhh");
+        });
+    }
+
 });
 
 class SignUp
