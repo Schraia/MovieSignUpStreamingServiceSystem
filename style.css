@@ -308,19 +308,11 @@ input, select, img {
     margin-bottom: 10px;
 }
 
-.paymentMethod {
-    margin-left: 90px;
-}
-
 label {
     color: #C5C6C7;
     position: absolute;
     right: 65%;
     margin-bottom: 10px;
-}
-
-.devices {
-    margin-left: 90px;
 }
 
 img:hover {
@@ -383,4 +375,16 @@ img.unhover {
 form {
     background: #1F2833;
     padding: 75px 0 ;
+}
+
+.styleCreditCard {
+    display: block;
+}
+
+.outPaymentCredit {
+    background-image: url("icons/credit-card-icon.svg");
+}
+
+.outPaymentCash {
+    background-image: url("icons/cash-icon.svg");
 }

@@ -6,110 +6,92 @@
     </head>
 
     
-    <body class="">
+    <body>
         <div class="header">
             <div class="topnav">
                 <h2 class="animate splat">Netflux</h2>
             </div>
         </div>
         <div class="backGround animate splat">
+
             <div class="h1">
                 <h1 class="animate blur delay-7">Registration Successful</h1>
             </div>
             <div class="mainBox animate blur delay-10">
-                    <div class="userImg">
-                        <img class="userIMG unhover" src="icons/shrenk.jpg">
+
+                <div class="userImg">
+                    <img class="userIMG unhover" src="icons/shrenk.jpg">
+                </div>
+
+                <div>
+                    <label for="outTextBoxName">Name: </label>
+                    <span id="outTextBoxName"></span>
+                </div>
+                
+                <div>
+                    <label for="outTextBoxEmail">Email Address: </label>
+                    <span id="outTextBoxEmail"></span>
+                </div>
+                
+                <div class="outPaymentMethod" >
+                    <label for="outPaymentCredit">Payment Type: </label>
+                    <img id="outPaymentMethod">
+                </div>
+                <div>
+                    <label class="styleCreditCard" for="outPaymentValue">Credit Card Number:</label>
+                    <span class="styleCreditCard" id="outPaymentValue"></span>
+                </div>
+
+                <div>
+                    <label for="outSubsType">Subscription Type: </label>
+                    <span id="outSubsType"></span>
+                </div>
+
+                <div>
+                    <label for="outTotalMonthlyFee">Total Monthly Fee: </label>
+                    <span id="outTotalMonthlyFee"></span>
+                </div>
+                
+                <!--Lagyan nalang ng img kc no idea lalagay ko-->
+                <div class="devices" id="devicesContainer"> 
+                    <label for="devAcc">Device to Access: </label>
+
+                    <div class="tooltip">
+                    <img class="phone unhover hidden" id="phone" src="">
+                    <span class="tooltiptext">Phone</span>
                     </div>
 
-                    <div>
-                        <label for="outTextBoxName">Name: </label>
-                        <span id="outTextBoxName">.</span>
-                    </div>
-                    
-                    <div>
-                        <label for="textBoxEmail">Email Address: </label>
-                        <span id="textBoxEmail">.</span>
-                    </div>
-                    
-                    <div class="paymentMethod" id="paymentMethod" required>
-                        <label for="paymentCredit">Payment Type: </label>
-                        <img class="paymentCredit unhover" id="paymentCredit" src="icons/credit-card-icon.svg">
-                        <img class="paymentCash unhover" id="paymentCash" src="icons/cash-icon.svg">                 
-                    </div>
-                    <div>
-                        <label for="payCredit" id="payCreditL" class="payCreditL">Enter your Credit Card number: </label>
-                        <span id="payCredit" class="payCredit">.</span>
-                    </div>
-                    <div>
-                        <label for="payCash" id="payCashL" class="payCashL">Enter your monthly payment: </label>
-                        <span id="payCash" class="payCash">.</span>
+                    <div class="tooltip">
+                    <img class="tablet tooltip unhover hidden" id="tablet" src="">
+                    <span class="tooltiptext">Tablet</span>
                     </div>
 
-                    <div>
-                        <label for="subsType">Subscription Type: </label>
-                        <span id="subsType">.</span>
+                    <div class="tooltip">
+                    <img class="computer tooltip unhover hidden" id="computer" src="">
+                    <span class="tooltiptext">Computer</span>
                     </div>
 
-                    <div>
-                        <label for="totFee">Total Monthly Fee: </label>
-                        <span id="totFee">.</span>
-                    </div>
-                    
-                    <!--Lagyan nalang ng img kc no idea lalagay ko-->
-                    <div class="devices"> 
-                        <label for="devAcc">Device to Access: </label>
-
-                        <div class="tooltip">
-                        <img class="phone unhover hidden" id="phone" src="">
-                        <span class="tooltiptext">Phone</span>
-                        </div>
-
-                        <div class="tooltip">
-                        <img class="tablet tooltip unhover hidden" id="tablet" src="">
-                        <span class="tooltiptext">Tablet</span>
-                        </div>
-
-                        <div class="tooltip">
-                        <img class="computer tooltip unhover hidden" id="computer" src="">
-                        <span class="tooltiptext">Computer</span>
-                        </div>
-
-                        <div class="tooltip">
-                        <img class="tv tooltip unhover hidden" id="tv" src="">
-                        <span class="tooltiptext">TV</span>
-                        </div>  
+                    <div class="tooltip">
+                    <img class="tv tooltip unhover hidden" id="tv" src="">
+                    <span class="tooltiptext">TV</span>
                     </div>  
+                </div>  
 
-                    <div>
-                        <label for="usersAccess">Number of Users: </label>
-                        <span id="usersAccess">.</span>                       
-                    </div>
+                <div id="usersContainer">
+                    <label for="outNumOfUsers">Number of Users: </label>
+                    <span id="outNumOfUsers"></span>                       
+                </div>
 
-                    <div>
-                        <label for="nextPay">Date of the Next Payment: </label>
-                        <span id="nextPay">.</span>                       
-                    </div>
+                <div>
+                    <label for="outResolutionType">Resolution Type: </label>
+                    <span id="outResolutionType"></span>
+                </div>
 
-                    <div>
-                        <label for="resolutionType">Resolution Type: </label>
-                        <span id="resolutionType">.</span>
-                    </div>
-                    <div>
-                    </div>
-                    <button id="bruh">bruh</button>
-            
+                <div>
+                    <label for="outNextDatePayment">Date of the Next Payment: </label>
+                    <span id="outNextDatePayment"></span>                       
+                </div>
 
-                    <div class="output">
-                        <p id="outName"></p>
-                        <p id="outEmail"></p>
-                        <p id="outSubscriptionType"></p>
-                        <p id="outTotalMonthlyFee"></p>
-                        <p id="outEligibleDevice"></p>
-                        <p id="outNumberUsers"></p>
-                        <p id="outDateNextPayment"></p>
-                    </div>
             </div>
         </div>
-
-       
 </html>

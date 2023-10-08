@@ -75,13 +75,94 @@ document.addEventListener("DOMContentLoaded", function()
     else if (window.location.pathname.endsWith("/output.html"))
     {
         const signUp = JSON.parse(localStorage.getItem("signUpData"));
+        console.log(signUp);
 
+        // Name
         document.getElementById("outTextBoxName").innerText = signUp._name;
-        //document.getElementById("out")
         
-        document.getElementById("bruh").addEventListener("click", function() {
-            console.log("bruhhhh");
-        });
+        // Email
+        document.getElementById("outTextBoxEmail").innerText = signUp._email;
+
+        // Payment Method
+        if (signUp._paymentMethod == "Cash")
+        {
+            document.getElementById("outPaymentMethod").src = "icons/cash-icon.svg";
+        }
+        else 
+        {
+            document.getElementById("outPaymentMethod").src = "icons/credit-card-icon.svg";
+        }
+
+        // Payment Method value, when Credit method
+        if (signUp._paymentMethodValue !== "Cash")
+        {
+            document.getElementById("outPaymentValue").innerText = signUp._paymentMethodValue;
+        }
+        else 
+        {
+            document.getElementsByClassName("styleCreditCard")[0].style.display = "none";
+        }
+
+        // Subscription Type
+        document.getElementById("outSubsType").innerText = signUp._subsType;
+        
+        // Total Monthly Fee
+        document.getElementById("outTotalMonthlyFee").innerText = signUp._monthlyFee;
+
+        // Device to Access
+        devicesContainer = document.getElementById("devicesContainer");
+        const deviceUrls = [
+            "icons/phone-icon.svg",
+            "icons/tablet-icon.svg",
+            "icons/computer-icon.svg",
+            "icons/tv-icon.svg"
+        ]
+
+        for (let i = 0; i < signUp._deviceAccessArray.length; i++)
+        {
+            const imgElement = document.createElement("img");
+
+            switch (signUp._deviceAccessArray[i])
+            {
+                case "Phone":
+                {
+                    imgElement.src = deviceUrls[0];
+                    break;
+                }
+                case "Tablet":
+                {
+                    imgElement.src = deviceUrls[1];
+                    break;
+                }
+                case "Computer":
+                {
+                    imgElement.src = deviceUrls[2];
+                    break;
+                }
+                case "TV":
+                {
+                    imgElement.src = deviceUrls[3];
+                    break;
+                }
+            }
+
+            devicesContainer.appendChild(imgElement);
+        }
+
+        // No. of users
+        usersContainer = document.getElementById("usersContainer");
+        for (let i = 0; i < signUp._numOfUsers; i++)
+        {
+            const imgElement = document.createElement("img");
+            imgElement.src = "icons/user-icon.svg";
+            usersContainer.appendChild(imgElement);
+        }
+        
+        // Resolution type
+        document.getElementById("outResolutionType").innerText = signUp._resolutionType;
+        
+        // Next monthly payment date
+        document.getElementById("outNextDatePayment").innerText = signUp._nextDatePayment;
     }
 
 });
@@ -96,6 +177,11 @@ class SignUp
     _usersAcess;
     _resolutionType;
 
+    _monthlyFee;
+    _numOfUsers;
+    _nextDatePayment;
+    _deviceAccessArray;
+
     constructor(name, email, paymentMethod, paymentMethodValue, subsType, usersAccess, resolutionType)
     {
         this.name = name;
@@ -105,6 +191,11 @@ class SignUp
         this.subsType = subsType;
         this.usersAccess = usersAccess;
         this.resolutionType = resolutionType;
+
+        this._monthlyFee = this.calculateMonthlyFee();
+        this._numOfUsers = this.numOfUsers();
+        this._nextDatePayment = this.calculateNextMonthDate();
+        this._deviceAccessArray = this.deviceAccess();
     }
 
     static hasNoNumbers(value)
