@@ -83,7 +83,9 @@ img:hover {
     border-style: solid;
 }
 
-
+.payCredit, .payCreditL {
+    display: none;
+}
 
 form {
     background: #1F2833;

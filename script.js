@@ -151,11 +151,11 @@ class SignUp
 
     set paymentMethodValue(value)
     {
-        this._paymentMethod = value;
+        this._paymentMethodValue = value;
     }
     get paymentMethodValue()
     {
-        return this._paymentMethodValuel;
+        return this._paymentMethodValue;
     }
 
     set subsType(value)
