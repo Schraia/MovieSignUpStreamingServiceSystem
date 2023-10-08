@@ -14,12 +14,12 @@ document.addEventListener("DOMContentLoaded", function()
         // Subscription bill to be displayed in separate HTML
         console.log("Name: ", signUp.name);
         console.log("Email: ", signUp.email);
-        console.log("Payment: ", signUp.paymentMethod); 
-        console.log("PaymentMethodValue: ",);
+        console.log("Payment: ", signUp.paymentMethod); // Image
+        console.log("PaymentMethodValue: ", signUp.paymentMethodValue);
         console.log("Subs: ", signUp.subsType);
         console.log("Total Monthly Fee: ", signUp.calculateMonthlyFee());
-        console.log("DeviceImageAccess:",)
-        console.log("Number of users: ",)
+        console.log("DeviceImageAccess:", signUp.deviceAccess()); // Image
+        console.log("Number of users: ", signUp.numOfUsers()); // Image
         console.log("UsersAccess: ", signUp.usersAccess);
         console.log("Resolution: ", signUp.resolutionType);
         console.log("Next Charge Date: ", signUp.calculateNextMonthDate());
@@ -152,11 +152,11 @@ class SignUp
 
     set paymentMethodValue(value)
     {
-        // do setters
+        this._paymentMethod = value;
     }
     get paymentMethodValue()
     {
-        return this._paymentMethodValue
+        return this._paymentMethodValuel;
     }
 
     set subsType(value)
@@ -273,5 +273,48 @@ class SignUp
         const futureYear = futureDate.getFullYear();
 
         return `${futureMonth}/${futureDay}/${futureYear}`;
+    }
+
+    numOfUsers()
+    {
+        let users = 0;
+        switch(this.subsType){
+            case "Mobile":
+                users = 1;
+                break;
+            case "Basic":
+                users = 2;
+                break;
+            case "Standard":
+                users = 3;
+                break;
+            case "Premium":
+                users = 5;
+                break;
+        }
+        users += this.usersAccess;
+
+        return users;
+    }
+
+    deviceAccess()
+    {
+        let devices = [];
+        switch(this.subsType){
+            case "Mobile":
+                devices = ["Phone", "Tablet"];
+                break;
+            case "Basic":
+                devices = ["Phone", "Tablet"];
+                break;
+            case "Standard":
+                devices = ["Phone", "Tablet", "TV"];
+                break;
+            case "Premium":
+                devices = ["Phone", "Tablet", "Computer", "TV"];
+                break;
+        }
+
+        return devices;
     }
 }
