@@ -379,5 +379,6 @@ img.unhover {
 
 form {
     background: #1F2833;
+    border-radius: 50px;
     padding: 75px 0 ;
 }
