@@ -25,27 +25,25 @@ document.addEventListener("DOMContentLoaded", function()
         console.log("Next Charge Date: ", signUp.calculateNextMonthDate());
     });
 
+    let userpaymentMethodValue = undefined;
     let userpaymentMethod = undefined;
     // If the cash image is clicked 
     document.getElementById("cash").addEventListener("click", function() {
         userpaymentMethod = "Cash";
+        userpaymentMethodValue = "Cash";
         document.getElementById("payCredit").style.display = "none";
         document.getElementById("payCreditL").style.display = "none";
-        //document.getElementById("payCash").style.display = "inline ";
-        //document.getElementById("payCashL").style.display = "inline";
         document.getElementById('payCredit').required = false;
     });
     // If the credit card image is clicked 
     document.getElementById("creditCard").addEventListener("click", function() {
         userpaymentMethod = "Credit";
-        //document.getElementById("payCash").style.display = "none";
-        //document.getElementById("payCashL").style.display = "none";
+        userpaymentMethodValue = undefined;
         document.getElementById("payCredit").style.display = "inline";
         document.getElementById("payCreditL").style.display = "inline";
         document.getElementById('payCredit').required = true;
     });
-
-    let userpaymentMethodValue = undefined;
+    // When the credit card image is clicked, there is a textbox
     document.getElementById("payCredit").addEventListener("input", function() {
         userpaymentMethodValue = this.value;
     });
@@ -151,7 +149,21 @@ class SignUp
 
     set paymentMethodValue(value)
     {
-        this._paymentMethodValue = value;
+        
+        if (value === "" || value === undefined) 
+        {
+            alert("Payment method value field must not be empty");
+            throw new Error();
+        }   
+
+        let trimmedValue = value.trim();
+        if (trimmedValue !== "Cash" && SignUp.hasNoNumbers(trimmedValue))
+        {
+            alert("Payment method value field must be an integer");
+            throw new Error();
+        }
+
+        this._paymentMethodValue = trimmedValue;
     }
     get paymentMethodValue()
     {
