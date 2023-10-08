@@ -111,13 +111,11 @@ paymentCash.addEventListener("onclick", function(){
 function creditPay() 
 {
     document.getElementById("payCredit").style.display = "inline";
-    document.getElementById("payCredit").required = true;
     document.getElementById("payCreditL").style.display = "inline";
 }
 
 function cashPay() 
 {
     document.getElementById("payCash").style.display = "inline";
-    document.getElementById("payCash").required  = true;
     document.getElementById("payCashL").style.display = "inline";
 }

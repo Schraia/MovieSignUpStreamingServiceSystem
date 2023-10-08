@@ -5,18 +5,18 @@
         <link rel="stylesheet" href="style.css">
     </head>
 
-    <body>
+    <body class="">
         <div class="header">
             <div class="topnav">
-                <h2>XMovies</h2>
+                <h2 class="animate splat">Netflux</h2>
             </div>
         </div>
-        <div class="backGround">
+        <div class="backGround animate splat">
             <div class="h1">
-                <h1>Subscription Registration</h1>
+                <h1 class="animate blur delay-7">Subscription Registration</h1>
             </div>
-            <div class="mainBox">
-                <form>
+            <div class="mainBox animate blur delay-10">
+                <form target="_blank" action="output.html">
                     <div>
                         <label for="textBoxName">Name: </label>
                         <input type="text" id="textBoxName" required>
@@ -27,17 +27,18 @@
                         <input type="text" id="textBoxEmail" required>
                     </div>
                     
-                    <div id="paymentMethod" required>
+                    <div class="paymentMethod" id="paymentMethod">
+                        <label for="paymentCredit">Payment Type: </label>
                         <img class="paymentCredit" id="paymentCredit" src="cardMethod.png" onclick="creditPay()">
                         <img class="paymentCash" id="paymentCash" src="abc.png" onclick="cashPay()">                 
                     </div>
                     <div>
                         <label for="payCredit" id="payCreditL" class="payCreditL">Enter your Credit Card number: </label>
-                        <input type="text" id="payCredit" class="payCredit" required>
+                        <input type="text" id="payCredit" class="payCredit hidden">
                     </div>
                     <div>
                         <label for="payCash" id="payCashL" class="payCashL">Enter your monthly payment: </label>
-                        <input type="text" id="payCash" class="payCash" required>
+                        <input type="text" id="payCash" class="payCash hidden">
                     </div>
 
                     <div>
@@ -62,17 +63,7 @@
                     <div>
                         <input type="submit">
                     </div>
-                </form>>
-
-                    <div class="output">
-                        <p id="outName"></p>
-                        <p id="outEmail"></p>
-                        <p id="outSubscriptionType"></p>
-                        <p id="outTotalMonthlyFee"></p>
-                        <p id="outEligibleDevice"></p>
-                        <p id="outNumberUsers"></p>
-                        <p id="outDateNextPayment"></p>
-                    </div>
+                </form>
             </div>
         </div>
 </html>
