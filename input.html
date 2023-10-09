@@ -10,7 +10,8 @@
         
         <div class="header">
             <div class="topnav">
-                <h2>XMovies</h2>
+                <img class="logo unhover" src="icons/logo.png">
+                <h2>ExclusiFilms</h2>
             </div>
         </div>
 
@@ -29,14 +30,11 @@
                         <label for="textBoxEmail">Email Address: </label>
                         <input type="text" id="textBoxEmail" required>
                     </div>
-
-                    <!-- <div>
-                        <label for="paymentMethod">Payment Method: </label>
-                    </div> -->
-
+                    
                     <div id="paymentMethod">
-                        <img class="paymentCredit" id="cash" src="icons/cash-icon.svg">
-                        <img class="paymentCash" id="creditCard" src="icons/credit-card-icon.svg">                 
+                        <label class="lilMarginTop" for="paymentMethod">Payment Method: </label>
+                        <img class="paymentCash" id="cash" src="icons/cash-icon.svg">
+                        <img class="paymentCredit" id="creditCard" src="icons/credit-card-icon.svg">                 
                     </div>
                     <div>
                         <label for="payCredit" id="payCreditL"  class="payCreditL">Enter your Credit Card number: </label>
@@ -58,17 +56,23 @@
                         <input type="number" id="usersAccess" required>                       
                     </div>
 
-                    <!-- <div>
-                        <label for="resolutionTypeGroup">Resolution Type: </label>
-                    </div> -->
+                        
+                   
 
                     <div class="resolutionRadioGroup">
-                        <input type="radio" id="720p" name="resolutionTypeGroup" value="720p" checked = "checked">
-                        <label>720p</label><br>
-                        <input type="radio" id="1080p" name="resolutionTypeGroup" value="1080p">
-                        <label>1080p</label><br>
-                        <input type="radio" id="4k" name="resolutionTypeGroup" value="4k">
-                        <label>4k</label> 
+                        <label for="resolutionTypeGroup">Resolution Type: </label>
+                        <div class="radioB lilMarginLeft">
+                        <label for="720p" class="radioLabel">720p</label>
+                        <input type="radio" class="radio" id="720p" name="resolutionTypeGroup" value="720p" checked = "checked">
+                        </div>
+                        <div class="radioB">
+                        <label for="1080p" class="radioLabel">1080p</label>
+                        <input type="radio" class="radio" id="1080p" name="resolutionTypeGroup" value="1080p">
+                        </div>
+                        <div class="radioB">
+                        <label for="4k" class="radioLabel">4k</label> 
+                        <input type="radio" class="radio" id="4k" name="resolutionTypeGroup" value="4k">
+                        </div>
                     </div>
                     <div>
                         <input type="submit" id="testButton" value="Submit">

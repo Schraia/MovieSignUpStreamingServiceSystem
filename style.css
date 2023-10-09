@@ -208,26 +208,28 @@ body {
 .header {
     overflow: hidden;
     margin: -8px 0px 0px -8px;
-    padding-right: -10px;
     width: 100%;
     height: 100%;
     background-color: rgba(17, 19, 22, 0.9);
 }
 .topnav {
-    margin: 25px 0px 0px 25px;
+    margin: 25px 0px 0px 100px;
     text-align: left;
+    align-items: left;
 
     color: #66FCF1;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
 }
 div.backGround {
     position: relative; 
     background-color: #0B0C10;
     border: 1px;
+    border-radius: 75px;
     border-style: solid;
     border-color: #45A29E;
     margin: 0px 100px 100px 100px;
-    height: 77vh;
+    height: 90vh;
     width: 85%;
     display: flex;
     align-items: center;
@@ -237,6 +239,7 @@ div.backGround {
 div.backGround::before {    
       content: "";
       background-image: url("icons/innerbox.png");
+      border-radius: 75px;
       background-position: center;
       background-repeat: repeat;
       background-size: cover;
@@ -267,7 +270,7 @@ div.backGround::before {
 h1 {
     color: #66FCF1;
     font-family: "Gill Sans", sans-serif;
-    margin-top: -75px;
+    margin-top: -70px;
 }
 
 .tooltip {
@@ -294,8 +297,11 @@ h1 {
 .mainBox {
     position: relative;
     width: 60%;
-    height: 60%;
+    height: 70%;
     text-align: center;
+    border-radius: 75px;
+    background: #1F2833;
+    padding: 75px;
 
 }
 
@@ -307,6 +313,12 @@ span {
 input, select, img {
     margin-bottom: 10px;
 }
+img.logo {
+  position: absolute;
+  width: 60px;
+  height: 30px;
+  left: 1%;
+}
 
 label {
     color: #C5C6C7;
@@ -314,7 +326,10 @@ label {
     right: 65%;
     margin-bottom: 10px;
 }
+.usersContainer {
+  overflow: hidden;
 
+}
 img:hover {
 
     border: 3px;
@@ -325,8 +340,12 @@ img:hover {
 img.unhover {
     pointer-events: none;
 }
-
-
+.focus {
+  border: 3px solid #45A29E;
+}
+.unfocus {
+  border: none;
+}
 .hidden {
     display: none;
 }
@@ -371,10 +390,21 @@ img.unhover {
     width: 70px;
     height: 40px;
 }
-
-form {
-    background: #1F2833;
-    padding: 75px 0 ;
+.radio {
+  margin-right: 10px;
+}
+.radioB {
+  display: inline;
+}
+.radioLabel {
+    position: initial;
+    overflow: none;
+}
+.lilMarginTop {
+  margin-top: 15px;
+}
+.lilMarginLeft {
+  margin-left: 25px;
 }
 
 .styleCreditCard {

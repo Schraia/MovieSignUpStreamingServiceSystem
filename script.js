@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", function()
         document.getElementById("cash").addEventListener("click", function() {
             userpaymentMethod = "Cash";
             userpaymentMethodValue = "Cash";
+            document.getElementById("cash").classList.add("focus")
+            document.getElementById("creditCard").classList.remove("focus")
             document.getElementById("payCredit").style.display = "none";
             document.getElementById("payCreditL").style.display = "none";
             document.getElementById("payCredit").required = false;
@@ -16,8 +18,10 @@ document.addEventListener("DOMContentLoaded", function()
         document.getElementById("creditCard").addEventListener("click", function() {
             userpaymentMethod = "Credit";
             userpaymentMethodValue = undefined;
+            document.getElementById("creditCard").classList.add("focus")
+            document.getElementById("cash").classList.remove("focus")
             document.getElementById("payCredit").style.display = "inline";
-            document.getElementById("payCreditL").style.display = "inline";
+            document.getElementById("payCreditL").style.display = "inline";           
             document.getElementById('payCredit').required = true;
         });
         // When the credit card image is clicked, there is a textbox
@@ -147,15 +151,17 @@ document.addEventListener("DOMContentLoaded", function()
             }
 
             devicesContainer.appendChild(imgElement);
+            imgElement.classList.add("unhover")
         }
 
         // No. of users
         usersContainer = document.getElementById("usersContainer");
-        for (let i = 0; i < signUp._numOfUsers; i++)
+        for (let i = 0; i < signUp._numOfUsers && i <= 4; i++)
         {
             const imgElement = document.createElement("img");
             imgElement.src = "icons/user-icon.svg";
             usersContainer.appendChild(imgElement);
+            imgElement.classList.add("unhover")
         }
         
         // Resolution type
