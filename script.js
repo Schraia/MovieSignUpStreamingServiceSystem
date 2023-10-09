@@ -91,10 +91,12 @@ document.addEventListener("DOMContentLoaded", function()
         if (signUp._paymentMethod == "Cash")
         {
             document.getElementById("outPaymentMethod").src = "icons/cash-icon.svg";
+            document.getElementById("outPaymentMethod").classList.add("unhover")
         }
         else 
         {
             document.getElementById("outPaymentMethod").src = "icons/credit-card-icon.svg";
+            document.getElementById("outPaymentMethod").classList.add("unhover")
         }
 
         // Payment Method value, when Credit method
@@ -121,6 +123,12 @@ document.addEventListener("DOMContentLoaded", function()
             "icons/computer-icon.svg",
             "icons/tv-icon.svg"
         ]
+        const deviceClass = [
+            "phone",
+            "tablet",
+            "computer",
+            "tv"
+        ]
 
         for (let i = 0; i < signUp._deviceAccessArray.length; i++)
         {
@@ -130,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function()
             {
                 case "Phone":
                 {
-                    imgElement.src = deviceUrls[0];
+                    imgElement.src = deviceUrls[0];                
                     break;
                 }
                 case "Tablet":

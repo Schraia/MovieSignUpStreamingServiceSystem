@@ -406,6 +406,9 @@ img.unhover {
 .lilMarginLeft {
   margin-left: 25px;
 }
+.lilMarginBot {
+  margin-bottom: 10px;
+}
 
 .styleCreditCard {
     display: block;
